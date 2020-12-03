@@ -10,8 +10,8 @@ const createSessiontoken = () => {
 }
 
 const saltHash = () => {
-  var salt = bcrypt.genSaltSync(10);
-  var password = bcrypt.hashSync(password, salt);
+  const salt = bcrypt.genSaltSync(10);
+  const password = bcrypt.hashSync(password, salt);
   console.log(salt , password , "I am the result of the stuff for bcrypt")
 }
 
