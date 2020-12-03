@@ -95,6 +95,7 @@ router.get('/hello', async (req, res) => {
             }
           }
         )
+        return res.send(token)
         // .then((result) => console.log(result , "i am final result????"))
         // .then(result => res.json(result.userData))
         // .then(result => console.log(res.json(result) , "i am the result console logged"))
