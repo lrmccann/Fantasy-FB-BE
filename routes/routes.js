@@ -61,7 +61,7 @@ router.get('/hello', async (req, res) => {
     var password = req.params.id2
     let account = await db.User
       .findOne({ 'userData.userName': username })
-      .then((response) = console.log(response))
+      .then((res) = console.log(res))
       .catch((error)=> {
         console.log(error)
       })
