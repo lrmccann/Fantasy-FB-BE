@@ -72,6 +72,9 @@ router.get('/hello', async (req, res) => {
         {useFindAndModify : false}
       )
         .then(result => res.json(result.userData))
+        .catch((error) => {
+          console.log(error)
+        })
     } if(!account){
       res.json("Incorrect username, try again")
     }else{
