@@ -18,6 +18,7 @@ router.get('/hello', async (req, res) => {
       // return res.send(data)
       return res.json(data)
     })
+  })
 
   router.get('/seasons', async (req, res) => {
     var options = {
@@ -61,7 +62,7 @@ router.get('/hello', async (req, res) => {
     var password = req.params.id2
     let account = await db.User
       .findOne({ 'userData.userName': username })
-      .then(await checkPasswordAndSessionToken())
+      .then(await checkPasswordAndSessionToken(account))
       // .then((res) = console.log(res))
       .catch((error)=> {
         console.log(error)
@@ -113,6 +114,6 @@ router.get('/hello', async (req, res) => {
     // }
   })
 
-})
+// })
 
 module.exports = router;
