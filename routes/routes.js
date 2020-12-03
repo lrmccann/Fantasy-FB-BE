@@ -11,7 +11,7 @@ const createSessiontoken = () => {
 
 const saltHash = () => {
   const salt = bcrypt.genSaltSync(10);
-  const password = bcrypt.hashSync(pass, salt);
+  const password = bcrypt.hashSync(password, salt);
   console.log(salt , password , "I am the result of the stuff for bcrypt")
   return {password , salt}
 }
@@ -177,7 +177,7 @@ router.get('/hello', async (req, res) => {
 router.post('/authent' , async (req, res) => {
   console.log(req.body, "request body for auth")
   let account = await db.User.findOne({"userData.userName" : req.body.userName});
-  console.log(account , "account for some shiiiiiiiit")
+  // console.log(account , "account for some shiiiiiiiit")
   if(!account){
     const creds = saltHash(req.body.password);
     const token = createSessiontoken();
@@ -185,7 +185,7 @@ router.post('/authent' , async (req, res) => {
     req.body.salt = creds.salt;
     req.body.userData.sessionToken = token;
     await db.User.create(req.body)
-    .then(result => res.json(res.userData))
+    .then(result => res.json(result.userData))
     .catch((error) => console.log(error))
   }else{
     res.json("Username is already taken")
