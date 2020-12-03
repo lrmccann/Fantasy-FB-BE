@@ -83,7 +83,7 @@ router.get('/hello', async (req, res) => {
         await db.User.findByIdAndUpdate(
             { '_id' : account._id},
           { 'userData.sessionToken': token },
-          {'userFindAndModify' : false},
+          {'userFindAndModify' : false}
           // { new: true },    //Set new option to true to return the document AFTER update was applied.
           // function(err , docs){
           //   if(err){

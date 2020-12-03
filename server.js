@@ -13,7 +13,7 @@ console.log(process.env , "port for process env")
 app.use(cors());
 // solution for CORS policy issues
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin",  "* , https://fantasyapp-4012.herokuapp.com/");
+    res.header("Access-Control-Allow-Origin",  "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     res.header("Access-Control-Allow-Credentials", true);
