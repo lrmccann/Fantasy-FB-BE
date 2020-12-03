@@ -174,7 +174,7 @@ router.get('/hello', async (req, res) => {
   // }
 
 // })
-router.get('/authent' , async (req, res) => {
+router.post('/authent' , async (req, res) => {
   console.log(req, "i am req for auth")
   console.log(res, "i am response for auth")
 })
