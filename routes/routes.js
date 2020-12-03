@@ -12,8 +12,8 @@ const createSessiontoken = () => {
 const saltHash = () => {
   const salt = bcrypt.genSaltSync(10);
   const password = bcrypt.hashSync(password, salt);
-  console.log(salt , password , "I am the result of the stuff for bcrypt")
-  return {password , salt}
+  // console.log(salt , password , "I am the result of the stuff for bcrypt")
+  // return {password , salt}
 }
 
 router.get('/hello', async (req, res) => {
