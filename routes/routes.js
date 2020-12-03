@@ -1,4 +1,5 @@
 const router = require("express").Router();
+// const { response } = require("express");
 const usersController = require("../controller/controller");
 // const { User } = require("../model/index");
 // const auth = require("../controllers/middlewere/session-trecker");
@@ -60,6 +61,7 @@ router.get('/hello', async (req, res) => {
     var password = req.params.id2
     let account = await db.User
       .findOne({ 'userData.userName': username })
+      .then((response) = console.log(response))
       .catch((error)=> {
         console.log(error)
       })
