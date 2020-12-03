@@ -67,30 +67,6 @@ router.get('/hello', async (req, res) => {
       .catch((error)=> {
         console.log(error)
       })
-    const checkPasswordAndSessionToken = async () => {
-      console.log(account)
-      let passwordFromDb = account.password
-      if(password === passwordFromDb){
-        console.log("successfully logged in")
-        const token = createSessiontoken()
-        console.log(token , "this is session token")
-        await db.User.findByIdAndUpdate(
-          {'_id' : account._id},
-          { 'userData.sessionToken': token },
-          { new: true },    //Set new option to true to return the document AFTER update was applied.
-          {useFindAndModify : false}
-        )
-        .then(result => res.json(result))
-        .then(result => console.log(res.json(result) , "i am the result console logged"))
-        .catch(error => {
-          console.log(error)
-        })
-      }if(password !== passwordFromDb){
-        res.json("Wrong password, please try again")
-      }else{
-        res.json("Wrong username, please try again")
-      }
-    }
     // console.log(account, "this is account")
     // let match = await account.password
     // if(password === match){
@@ -113,6 +89,31 @@ router.get('/hello', async (req, res) => {
     //   res.json("Incorrect password, try again")
     // }
   })
+
+  const checkPasswordAndSessionToken = async (account) => {
+    console.log(account)
+    let passwordFromDb = account.password
+    if(password === passwordFromDb){
+      console.log("successfully logged in")
+      const token = createSessiontoken()
+      console.log(token , "this is session token")
+      await db.User.findByIdAndUpdate(
+        {'_id' : account._id},
+        { 'userData.sessionToken': token },
+        { new: true },    //Set new option to true to return the document AFTER update was applied.
+        {useFindAndModify : false}
+      )
+      .then(result => res.json(result))
+      .then(result => console.log(res.json(result) , "i am the result console logged"))
+      .catch(error => {
+        console.log(error)
+      })
+    }if(password !== passwordFromDb){
+      res.json("Wrong password, please try again")
+    }else{
+      res.json("Wrong username, please try again")
+    }
+  }
 
 // })
 
