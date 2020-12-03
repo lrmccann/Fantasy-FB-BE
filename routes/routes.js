@@ -87,10 +87,10 @@ router.get('/hello', async (req, res) => {
           function(err , docs){
             if(err){
               console.log(err , "i am second error")
-              return res.json(err)
+              // return res.json(err)
             }else{
               console.log(docs , "idk what this is but its docs")
-              return res.json("it worked")
+              // return res.json("it worked")
             }
           }
         )
