@@ -106,7 +106,7 @@ router.post('/authent' , async (req, res) => {
     req.body.sessionToken = token;
     await db.User.create(req.body)
     .then(result => console.log(result))
-    .then(result => res.json(result))
+    .then(result => res.send(result))
     .catch((error) => console.log(error))
   }else{
     res.json("Username is already taken")
