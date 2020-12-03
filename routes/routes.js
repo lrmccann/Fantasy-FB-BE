@@ -62,13 +62,14 @@ router.get('/hello', async (req, res) => {
       .findOne({ 'userData.userName': username });
     console.log(account, "this is account")
     if(password === account.password){
-      console.log("password did match")
+      console.log("password DID match")
       const token = createSessiontoken();
       console.log(token , "i am session token")
       await db.User.findOneAndUpdate(
-        { 'userData.userName': req.params.id1 },
+        { 'userData.userName': username },
         { 'userData.sessionToken': token },
-        { new: true }    //Set new option to true to return the document AFTER update was applied.
+        { new: true },    //Set new option to true to return the document AFTER update was applied.
+        {useFindAndModify : false}
       )
         .then(result => res.json(result.userData))
     } if(!account){
