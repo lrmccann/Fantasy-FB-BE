@@ -103,7 +103,7 @@ router.get('/hello', async (req, res) => {
       const token = createSessiontoken()
       console.log(token , "this is session token")
       await db.User.findByIdAndUpdate(
-        {_id : account._id},
+         account._id,
         { 'userData.sessionToken': token },
         { new: true },    //Set new option to true to return the document AFTER update was applied.
         {useFindAndModify : false}
