@@ -10,10 +10,9 @@ const createSessiontoken = () => {
 }
 
 const saltHash = () => {
-  const salt = bcrypt.genSaltSync(10);
-  const password = bcrypt.hashSync(password, salt);
-  // console.log(salt , password , "I am the result of the stuff for bcrypt")
-  // return {password , salt}
+  var salt = bcrypt.genSaltSync(10);
+  var password = bcrypt.hashSync(password, salt);
+  console.log(salt , password , "I am the result of the stuff for bcrypt")
 }
 
 router.get('/hello', async (req, res) => {
@@ -37,7 +36,6 @@ router.get('/hello', async (req, res) => {
     axios.request(options).then(function (response) {
       console.log(response)
       return res.json(response.data)
-      //   console.log(response.data);
     }).catch(function (error) {
       console.error(error);
     });
@@ -54,7 +52,6 @@ router.get('/hello', async (req, res) => {
     axios.request(options).then(function (response) {
       console.log(response)
       return res.json(response.data)
-      //   console.log(response.data);
     }).catch(function (error) {
       console.error(error);
     });
@@ -75,10 +72,6 @@ router.get('/hello', async (req, res) => {
           // return res.json("it worked")
         }
       })
-      // .catch((error)=> {
-      //   console.log(error)
-      //   res.status('300').send('bad call')
-      // })
       let passwordFromDb = account.password
       if(password === passwordFromDb){
         console.log("successfully logged in")
@@ -90,94 +83,20 @@ router.get('/hello', async (req, res) => {
           { 'userData.sessionToken': token },
           {'userFindAndModify' : false},
           { new: true }    //Set new option to true to return the document AFTER update was applied.
-          // function(err , docs){
-          //   if(err){
-          //     console.log(err , "i am second error")
-          //     // return res.json(err)
-          //   }else{
-          //     console.log(docs , "idk what this is but its docs")
-          //     // return res.json("it worked")
-          //   }
-          // }
         )
         .then(res.json(token))
-        // .then((result) => console.log(result , "idk what this could be"))
-        // .then((result) => console.log(result , "i am final result????"))
-        // .then(result => res.json(result.userData))
-        // .then(result => console.log(res.json(result) , "i am the result console logged"))
-        // .catch((error) => {
-        //   console.log(error)
-        //   return error
-        // })
       }if(password !== passwordFromDb){
-        // res.json("Wrong password, please try again")
         return res.json("wrong password")
       }else{
-        // res.json("Wrong username, please try again")
         return res.json("wrong username")
       }
-    // console.log(account, "this is account")
-    // let match = await account.password
-    // if(password === match){
-    //   console.log("password DID match")
-    //   const token = createSessiontoken();
-    //   console.log(token , "i am session token")
-    //   await db.User.findOneAndUpdate(
-    //     { 'userData.userName': username },
-    //     { 'userData.sessionToken': token },
-    //     { new: true },    //Set new option to true to return the document AFTER update was applied.
-    //     {useFindAndModify : false}
-    //   )
-    //     .then(result => res.json(result.userData))
-    //     .catch((error) => {
-    //       console.log(error)
-    //     })
-    // } if(!account){
-    //   res.json("Incorrect username, try again")
-    // }else{
-    //   res.json("Incorrect password, try again")
-    // }
   })
-
-  // const checkPasswordAndSessionToken = async (account , password) => {
-  //   console.log(account, "i am account in checkpasswordandsessiontoken")
-  //   console.log(password , "i am password in checkpasswordandsessiontoken")
-  //   let passwordFromDb = account.password
-  //   if(password === passwordFromDb){
-  //     console.log("successfully logged in")
-  //     const token = createSessiontoken()
-  //     console.log(token , "this is session token")
-  //     console.log(account._id, "i am zee account id")
-  //     await db.User.findByIdAndUpdate(
-  //        account._id,
-  //       { 'userData.sessionToken': token },
-  //       // { new: true },    //Set new option to true to return the document AFTER update was applied.
-  //       function(err , docs){
-  //         if(err){
-  //           console.log(err)
-  //         }else{
-  //           console.log(docs , "idk what this is but its docs")
-  //         }
-  //       }
-  //     )
-  //     .then(result => res.json(result))
-  //     .then(result => console.log(res.json(result) , "i am the result console logged"))
-  //     // .catch((error) => {
-  //     //   console.log(error)
-  //     //   return error
-  //     // })
-  //   }if(password !== passwordFromDb){
-  //     res.json("Wrong password, please try again")
-  //   }else{
-  //     res.json("Wrong username, please try again")
-  //   }
-  // }
-
-// })
 router.post('/authent' , async (req, res) => {
   console.log(req.body, "request body for auth")
-  let account = await db.User.findOne({"userData.userName" : req.body.userName});
-  // console.log(account , "account for some shiiiiiiiit")
+  let account = await db.User.findOne({"userData.userName" : req.body.userName})
+  .catch((error) => {
+    res.send(error)
+  })
   if(!account){
     const creds = saltHash(req.body.password);
     const token = createSessiontoken();
