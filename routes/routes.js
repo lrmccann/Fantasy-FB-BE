@@ -64,7 +64,8 @@ router.get('/hello', async (req, res) => {
         console.log(error)
       })
     console.log(account, "this is account")
-    if(password === account.password){
+    let match = await account.password
+    if(match){
       console.log("password DID match")
       const token = createSessiontoken();
       console.log(token , "i am session token")
