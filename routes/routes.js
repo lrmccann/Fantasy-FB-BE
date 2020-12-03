@@ -63,7 +63,7 @@ router.get('/hello', async (req, res) => {
     let account = await db.User
       .findOne({ 'userData.userName': username } , function(err , docs){
         if(err){
-          console.log(err)
+          console.log(err , "i am first error")
           res.status(69).send('bad request or something')
         }else{
           console.log(docs , "more docs to log i guess")
@@ -81,12 +81,12 @@ router.get('/hello', async (req, res) => {
         console.log(token , "this is session token")
         console.log(account._id, "i am zee account id")
         await db.User.findByIdAndUpdate(
-           account._id,
+          {"_id" : account._id},
           { 'userData.sessionToken': token.toString() },
           // { new: true },    //Set new option to true to return the document AFTER update was applied.
           function(err , docs){
             if(err){
-              console.log(err)
+              console.log(err , "i am second error")
             }else{
               console.log(docs , "idk what this is but its docs")
             }
