@@ -49,9 +49,8 @@ router.get('/gamesByWeek' , async (req, res) => {
 })
 
 router.get("/authenticate/:id1/:id2" , async (req, res) => {
-  console.log(req , "requueeessstttt")
-  console.log(req.body , "req booooody")
-  console.log(req.params , "req paaarrraaammmmssss")
+  console.log(req.params.id1 , "username")
+  console.log(req.params.id2 , "password")
 })
 
 })
