@@ -61,15 +61,47 @@ router.get('/hello', async (req, res) => {
     console.log(req.params.id2, "password")
     var password = req.params.id2
     let account = await db.User
-      .findOne({ 'userData.userName': username })
-      // .then(await checkPasswordAndSessionToken(account))
-      // .then((res) = console.log(res))
-      .catch((error)=> {
-        console.log(error)
-        res.status('300').send('bad call')
+      .findOne({ 'userData.userName': username } , function(err , docs){
+        if(err){
+          console.log(err)
+          res.status(69).send('bad request or something')
+        }else{
+          console.log(docs , "more docs to log i guess")
+          res.send("it worked")
+        }
       })
-      if(account){
-        checkPasswordAndSessionToken(account , password)
+      // .catch((error)=> {
+      //   console.log(error)
+      //   res.status('300').send('bad call')
+      // })
+      let passwordFromDb = account.password
+      if(password === passwordFromDb){
+        console.log("successfully logged in")
+        const token = createSessiontoken()
+        console.log(token , "this is session token")
+        console.log(account._id, "i am zee account id")
+        await db.User.findByIdAndUpdate(
+           account._id,
+          { 'userData.sessionToken': token },
+          // { new: true },    //Set new option to true to return the document AFTER update was applied.
+          function(err , docs){
+            if(err){
+              console.log(err)
+            }else{
+              console.log(docs , "idk what this is but its docs")
+            }
+          }
+        )
+        .then(result => res.json(result))
+        .then(result => console.log(res.json(result) , "i am the result console logged"))
+        // .catch((error) => {
+        //   console.log(error)
+        //   return error
+        // })
+      }if(password !== passwordFromDb){
+        res.json("Wrong password, please try again")
+      }else{
+        res.json("Wrong username, please try again")
       }
     // console.log(account, "this is account")
     // let match = await account.password
@@ -94,40 +126,39 @@ router.get('/hello', async (req, res) => {
     // }
   })
 
-  const checkPasswordAndSessionToken = async (account , password) => {
-    console.log(account, "i am account in checkpasswordandsessiontoken")
-    console.log(password , "i am password in checkpasswordandsessiontoken")
-    let passwordFromDb = account.password
-    if(password === passwordFromDb){
-      console.log("successfully logged in")
-      const token = createSessiontoken()
-      console.log(token , "this is session token")
-      console.log(account._id, "i am zee account id")
-      await db.User.findByIdAndUpdate(
-         account._id,
-        { 'userData.sessionToken': token },
-        { new: true },    //Set new option to true to return the document AFTER update was applied.
-        {useFindAndModify : false},
-        function(err , docs){
-          if(err){
-            console.log(err)
-          }else{
-            console.log(docs , "idk what this is but its docs")
-          }
-        }
-      )
-      .then(result => res.json(result))
-      .then(result => console.log(res.json(result) , "i am the result console logged"))
-      // .catch((error) => {
-      //   console.log(error)
-      //   return error
-      // })
-    }if(password !== passwordFromDb){
-      res.json("Wrong password, please try again")
-    }else{
-      res.json("Wrong username, please try again")
-    }
-  }
+  // const checkPasswordAndSessionToken = async (account , password) => {
+  //   console.log(account, "i am account in checkpasswordandsessiontoken")
+  //   console.log(password , "i am password in checkpasswordandsessiontoken")
+  //   let passwordFromDb = account.password
+  //   if(password === passwordFromDb){
+  //     console.log("successfully logged in")
+  //     const token = createSessiontoken()
+  //     console.log(token , "this is session token")
+  //     console.log(account._id, "i am zee account id")
+  //     await db.User.findByIdAndUpdate(
+  //        account._id,
+  //       { 'userData.sessionToken': token },
+  //       // { new: true },    //Set new option to true to return the document AFTER update was applied.
+  //       function(err , docs){
+  //         if(err){
+  //           console.log(err)
+  //         }else{
+  //           console.log(docs , "idk what this is but its docs")
+  //         }
+  //       }
+  //     )
+  //     .then(result => res.json(result))
+  //     .then(result => console.log(res.json(result) , "i am the result console logged"))
+  //     // .catch((error) => {
+  //     //   console.log(error)
+  //     //   return error
+  //     // })
+  //   }if(password !== passwordFromDb){
+  //     res.json("Wrong password, please try again")
+  //   }else{
+  //     res.json("Wrong username, please try again")
+  //   }
+  // }
 
 // })
 
