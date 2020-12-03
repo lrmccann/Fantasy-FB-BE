@@ -106,7 +106,7 @@ router.post('/authent' , async (req, res) => {
     req.body.password = await creds.password;
     req.body.salt = await creds.salt;
     req.body.sessionToken = token;
-    await db.User.create(req.body)
+    await db.User.create(req)
     .then(result => console.log(result))
     .then(result => res.send(result))
     .catch((error) => console.log(error))
