@@ -9,10 +9,11 @@ const createSessiontoken = () => {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 }
 
-const saltHash = async () => {
+const saltHash = async (pass) => {
   const salt = bcrypt.genSaltSync(10);
-  const password =  bcrypt.hashSync( password, salt);
-  // console.log(salt , password , "I am the result of the stuff for bcrypt")
+  const password = bcrypt.hashSync( pass, salt);
+  console.log(salt , password , "I am the result of the stuff for bcrypt")
+  return {password , salt}
 }
 
 router.get('/hello', async (req, res) => {
