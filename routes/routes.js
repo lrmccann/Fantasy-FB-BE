@@ -77,12 +77,13 @@ router.get('/hello', async (req, res) => {
       let passwordFromDb = account.password
       if(password === passwordFromDb){
         console.log("successfully logged in")
-        const token = createSessiontoken()
+        const token = createSessiontoken().toString()
         console.log(token , "this is session token")
         console.log(account._id, "i am zee account id")
         await db.User.findByIdAndUpdate(
-            { '_id' :account._id},
+            { '_id' : account._id},
           { 'userData.sessionToken': token },
+          {'userFindAndModify' : false},
           // { new: true },    //Set new option to true to return the document AFTER update was applied.
           function(err , docs){
             if(err){
