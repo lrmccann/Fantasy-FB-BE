@@ -98,10 +98,10 @@ router.post('/authent' , async (req, res) => {
     res.send(error)
   })
   if(!account){
-    const creds = saltHash(req.body.password);
+    const creds = saltHash(await req.body.password);
     const token = createSessiontoken();
-    req.body.password = creds.password;
-    req.body.salt = creds.salt;
+    req.body.password = await creds.password;
+    req.body.salt = await creds.salt;
     req.body.userData.sessionToken = token;
     await db.User.create(req.body)
     .then(result => res.json(result.userData))
