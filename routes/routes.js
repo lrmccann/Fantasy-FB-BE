@@ -68,6 +68,7 @@ router.get('/hello', async (req, res) => {
         }else{
           console.log(docs , "more docs to log i guess")
           // return res.json("it worked")
+          res.json(docs)
         }
       })
       // .catch((error)=> {
@@ -83,8 +84,8 @@ router.get('/hello', async (req, res) => {
         await db.User.findByIdAndUpdate(
             { '_id' : account._id},
           { 'userData.sessionToken': token },
-          {'userFindAndModify' : false}
-          // { new: true },    //Set new option to true to return the document AFTER update was applied.
+          {'userFindAndModify' : false},
+          { new: true }    //Set new option to true to return the document AFTER update was applied.
           // function(err , docs){
           //   if(err){
           //     console.log(err , "i am second error")
