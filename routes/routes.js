@@ -175,8 +175,21 @@ router.get('/hello', async (req, res) => {
 
 // })
 router.post('/authent' , async (req, res) => {
-  console.log(req, "i am req for auth")
-  console.log(res, "i am response for auth")
+  console.log(req.body, "request body for auth")
+  let account = await db.User.findOne({"userData.userName" : req.body.userName});
+  console.log(account , "account for some shiiiiiiiit")
+  if(!account){
+    const creds = saltHash(req.body.password);
+    const token = createSessiontoken();
+    req.body.password = creds.password;
+    req.body.salt = creds.salt;
+    req.body.userData.sessionToken = token;
+    await db.User.create(req.body)
+    .then(result => res.json(res.userData))
+    .catch((error) => console.log(error))
+  }else{
+    res.json("Username is already taken")
+  }
 })
 
 module.exports = router;
