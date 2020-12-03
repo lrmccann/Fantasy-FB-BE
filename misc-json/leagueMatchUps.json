@@ -1,0 +1,52 @@
+{
+    "data": [
+    {
+        "userName" : "Logan's Lassies",
+        "wins/losses" : "8-2-0",
+        "proj-points" : "###",
+        "league-rank" : "1" 
+    },
+    {
+        "userName" : "SuzeeS's Swag Team",
+        "wins/losses" : "7-3-0",
+        "proj-points" : "###",
+        "league-rank" : "2"
+    },
+    {
+        "userName" : "GolladaysHolladay",
+        "wins/losses" : "7-3-0",
+        "proj-points" : "###",
+        "league-rank" : "3"
+    },
+    {
+        "userName" : "Mia's Sweet Boys",
+        "wins/losses" : "7-3-0",
+        "proj-points" : "###",
+        "league-rank" : "4"
+    },
+    {
+        "userName" : "Mel's Minions",
+        "wins/losses" : "4-6-0",
+        "proj-points" : "###",
+        "league-rank" : "5"
+    },
+    {
+        "userName" : "Bench Mitch",
+        "wins/losses" : "3-7-0",
+        "proj-points" : "###",
+        "league-rank" : "6"
+    },
+    {
+        "userName" : "Roman Skwiot's Team",
+        "wins/losses" : "2-8-0",
+        "proj-points" : "###",
+        "league-rank" : "7"
+    },
+    {
+        "userName" : "Helena's Swell Team",
+        "wins/losses" : "2-8-0",
+        "proj-points" : "###",
+        "league-rank" : "8"
+    }
+]
+}
