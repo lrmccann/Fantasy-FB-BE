@@ -61,31 +61,56 @@ router.get('/hello', async (req, res) => {
     var password = req.params.id2
     let account = await db.User
       .findOne({ 'userData.userName': username })
-      .then((res) = console.log(res))
+      .then(checkPasswordAndSessionToken())
+      // .then((res) = console.log(res))
       .catch((error)=> {
         console.log(error)
       })
-    console.log(account, "this is account")
-    let match = await account.password
-    if(password === match){
-      console.log("password DID match")
-      const token = createSessiontoken();
-      console.log(token , "i am session token")
-      await db.User.findOneAndUpdate(
-        { 'userData.userName': username },
-        { 'userData.sessionToken': token },
-        { new: true },    //Set new option to true to return the document AFTER update was applied.
-        {useFindAndModify : false}
-      )
-        .then(result => res.json(result.userData))
-        .catch((error) => {
+    const checkPasswordAndSessionToken = async () => {
+      console.log(account)
+      let passwordFromDb = account.password
+      if(password === passwordFromDb){
+        console.log("successfully logged in")
+        const token = createSessiontoken()
+        console.log(token , "this is session token")
+        await db.User.findByIdAndUpdate(
+          {'_id' : account._id},
+          { 'userData.sessionToken': token },
+          { new: true },    //Set new option to true to return the document AFTER update was applied.
+          {useFindAndModify : false}
+        )
+        .then(result => res.json(result))
+        .then(result => console.log(res.json(result) , "i am the result console logged"))
+        .catch(error => {
           console.log(error)
         })
-    } if(!account){
-      res.json("Incorrect username, try again")
-    }else{
-      res.json("Incorrect password, try again")
+      }if(password !== passwordFromDb){
+        res.json("Wrong password, please try again")
+      }else{
+        res.json("Wrong username, please try again")
+      }
     }
+    // console.log(account, "this is account")
+    // let match = await account.password
+    // if(password === match){
+    //   console.log("password DID match")
+    //   const token = createSessiontoken();
+    //   console.log(token , "i am session token")
+    //   await db.User.findOneAndUpdate(
+    //     { 'userData.userName': username },
+    //     { 'userData.sessionToken': token },
+    //     { new: true },    //Set new option to true to return the document AFTER update was applied.
+    //     {useFindAndModify : false}
+    //   )
+    //     .then(result => res.json(result.userData))
+    //     .catch((error) => {
+    //       console.log(error)
+    //     })
+    // } if(!account){
+    //   res.json("Incorrect username, try again")
+    // }else{
+    //   res.json("Incorrect password, try again")
+    // }
   })
 
 })

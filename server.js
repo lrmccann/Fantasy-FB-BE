@@ -10,7 +10,6 @@ const cors = require('cors');
 console.log(process.env , "port for process env")
 
 
-app.use(cors());
 // solution for CORS policy issues
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin",  "*");
@@ -19,6 +18,8 @@ app.use((req, res, next) => {
     res.header("Access-Control-Allow-Credentials", true);
     next();
   });
+  app.use(cors());
+
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
