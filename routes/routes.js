@@ -64,10 +64,10 @@ router.get('/hello', async (req, res) => {
       .findOne({ 'userData.userName': username } , function(err , docs){
         if(err){
           console.log(err , "i am first error")
-          return res.json(err)
+          // return res.json(err)
         }else{
           console.log(docs , "more docs to log i guess")
-          return res.json("it worked")
+          // return res.json("it worked")
         }
       })
       // .catch((error)=> {
@@ -94,7 +94,9 @@ router.get('/hello', async (req, res) => {
           //     // return res.json("it worked")
           //   }
           // }
-        ).then((result) => console.log(result , "idk what this could be"))
+        )
+        .then(res.json(token))
+        // .then((result) => console.log(result , "idk what this could be"))
         // .then((result) => console.log(result , "i am final result????"))
         // .then(result => res.json(result.userData))
         // .then(result => console.log(res.json(result) , "i am the result console logged"))
