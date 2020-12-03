@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const usersController = require("../controller/controller");
+// const { User } = require("../model/index");
 // const auth = require("../controllers/middlewere/session-trecker");
 const db = require('../model/index');
 var axios = require("axios").default;
@@ -50,7 +51,13 @@ router.get('/gamesByWeek' , async (req, res) => {
 
 router.get("/authenticate/:id1/:id2" , async (req, res) => {
   console.log(req.params.id1 , "username")
+  var username = req.params.id1
   console.log(req.params.id2 , "password")
+  var password = req.params.id2
+  let account = await db.User
+  .findOne({'userData.userName' : username });
+  console.log(account , "this is account")
+  .find()
 })
 
 })
