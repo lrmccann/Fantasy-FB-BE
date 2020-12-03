@@ -101,6 +101,8 @@ router.post('/authent' , async (req, res) => {
   if(!account){
     const creds = saltHash(await req.body.password);
     const token = createSessiontoken();
+    console.log(req, "request .......... noffin")
+    console.log(req.body , "request .......... boday")
     req.body.password = await creds.password;
     req.body.salt = await creds.salt;
     req.body.sessionToken = token;
