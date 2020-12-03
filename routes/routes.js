@@ -1,7 +1,6 @@
 const router = require("express").Router();
-// const { response } = require("express");
+const bcrypt = require('bcrypt');
 const usersController = require("../controller/controller");
-// const { User } = require("../model/index");
 // const auth = require("../controllers/middlewere/session-trecker");
 const db = require('../model/index');
 var axios = require("axios").default;
@@ -10,6 +9,12 @@ const createSessiontoken = () => {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 }
 
+const saltHash = () => {
+  const salt = bcrypt.genSaltSync(10);
+  const password = bcrypt.hashSync(pass, salt);
+  console.log(salt , password , "I am the result of the stuff for bcrypt")
+  return {password , salt}
+}
 
 router.get('/hello', async (req, res) => {
   await db.User
@@ -68,7 +73,6 @@ router.get('/hello', async (req, res) => {
         }else{
           console.log(docs , "more docs to log i guess")
           // return res.json("it worked")
-          res.json(docs)
         }
       })
       // .catch((error)=> {
@@ -170,5 +174,9 @@ router.get('/hello', async (req, res) => {
   // }
 
 // })
+router.get('/authent' , async (req, res) => {
+  console.log(req, "i am req for auth")
+  console.log(res, "i am response for auth")
+})
 
 module.exports = router;
