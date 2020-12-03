@@ -64,10 +64,10 @@ router.get('/hello', async (req, res) => {
       .findOne({ 'userData.userName': username } , function(err , docs){
         if(err){
           console.log(err , "i am first error")
-          res.status(69).send('bad request or something')
+          return res.status(69).send('bad request or something')
         }else{
           console.log(docs , "more docs to log i guess")
-          res.send("it worked")
+          return res.status(420).send("it worked")
         }
       })
       // .catch((error)=> {
@@ -81,18 +81,20 @@ router.get('/hello', async (req, res) => {
         console.log(token , "this is session token")
         console.log(account._id, "i am zee account id")
         await db.User.findByIdAndUpdate(
-            {_id : account._id},
-          { 'userData.sessionToken': token.toString() },
-          // { new: true },    //Set new option to true to return the document AFTER update was applied.
+            account._id,
+          { 'userData.sessionToken': token },
+          { new: true },    //Set new option to true to return the document AFTER update was applied.
           function(err , docs){
             if(err){
               console.log(err , "i am second error")
+              return res.status(69).send("bad code")
             }else{
               console.log(docs , "idk what this is but its docs")
+              return res.status(300).send("it worked")
             }
           }
         )
-        .then((result) => console.log(result , "i am final result????"))
+        // .then((result) => console.log(result , "i am final result????"))
         // .then(result => res.json(result.userData))
         // .then(result => console.log(res.json(result) , "i am the result console logged"))
         // .catch((error) => {
@@ -100,9 +102,11 @@ router.get('/hello', async (req, res) => {
         //   return error
         // })
       }if(password !== passwordFromDb){
-        res.json("Wrong password, please try again")
+        // res.json("Wrong password, please try again")
+        return res.status(420).send("wrong password")
       }else{
-        res.json("Wrong username, please try again")
+        // res.json("Wrong username, please try again")
+        return res.status(420).send("wrong username")
       }
     // console.log(account, "this is account")
     // let match = await account.password
