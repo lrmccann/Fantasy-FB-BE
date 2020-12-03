@@ -64,10 +64,10 @@ router.get('/hello', async (req, res) => {
       .findOne({ 'userData.userName': username } , function(err , docs){
         if(err){
           console.log(err , "i am first error")
-          return res.status(69).send(err)
+          return res.json(err)
         }else{
           console.log(docs , "more docs to log i guess")
-          return res.status(420).send("it worked")
+          return res.json("it worked")
         }
       })
       // .catch((error)=> {
@@ -81,16 +81,16 @@ router.get('/hello', async (req, res) => {
         console.log(token , "this is session token")
         console.log(account._id, "i am zee account id")
         await db.User.findByIdAndUpdate(
-            { _id :account._id},
+            { '_id' :account._id},
           { 'userData.sessionToken': token },
           // { new: true },    //Set new option to true to return the document AFTER update was applied.
           function(err , docs){
             if(err){
               console.log(err , "i am second error")
-              return res.status(69).send(err)
+              return res.json(err)
             }else{
               console.log(docs , "idk what this is but its docs")
-              return res.status(300).send("it worked")
+              return res.json("it worked")
             }
           }
         )
@@ -103,10 +103,10 @@ router.get('/hello', async (req, res) => {
         // })
       }if(password !== passwordFromDb){
         // res.json("Wrong password, please try again")
-        return res.status(420).send("wrong password")
+        return res.json("wrong password")
       }else{
         // res.json("Wrong username, please try again")
-        return res.status(420).send("wrong username")
+        return res.json("wrong username")
       }
     // console.log(account, "this is account")
     // let match = await account.password
