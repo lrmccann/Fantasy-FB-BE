@@ -102,11 +102,13 @@ router.post('/authent' , async (req, res) => {
     const creds = saltHash(await req.body.password);
     const token = createSessiontoken();
     console.log(req, "request .......... noffin")
-    console.log(req.body , "request .......... boday")
+    const createUser = await req.body
+    console.log(createUser , "const for the request body in the page for sure")
+    // console.log(req.body , "request .......... boday")
     req.body.password = await creds.password;
     req.body.salt = await creds.salt;
     req.body.sessionToken = token;
-    await db.User.create(req)
+    await db.User.create(createUser)
     .then(result => console.log(result))
     .then(result => res.send(result))
     .catch((error) => console.log(error))
