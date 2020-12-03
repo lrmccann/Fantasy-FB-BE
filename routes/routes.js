@@ -85,17 +85,16 @@ router.get('/hello', async (req, res) => {
           { 'userData.sessionToken': token },
           {'userFindAndModify' : false},
           // { new: true },    //Set new option to true to return the document AFTER update was applied.
-          function(err , docs){
-            if(err){
-              console.log(err , "i am second error")
-              // return res.json(err)
-            }else{
-              console.log(docs , "idk what this is but its docs")
-              // return res.json("it worked")
-            }
-          }
-        )
-        return res.send(token)
+          // function(err , docs){
+          //   if(err){
+          //     console.log(err , "i am second error")
+          //     // return res.json(err)
+          //   }else{
+          //     console.log(docs , "idk what this is but its docs")
+          //     // return res.json("it worked")
+          //   }
+          // }
+        ).then(res.json({"sessionToken" : token}))
         // .then((result) => console.log(result , "i am final result????"))
         // .then(result => res.json(result.userData))
         // .then(result => console.log(res.json(result) , "i am the result console logged"))
