@@ -94,7 +94,7 @@ router.get('/hello', async (req, res) => {
           //     // return res.json("it worked")
           //   }
           // }
-        ).then(res.json({"sessionToken" : token}))
+        ).then((result) => console.log(result , "idk what this could be"))
         // .then((result) => console.log(result , "i am final result????"))
         // .then(result => res.json(result.userData))
         // .then(result => console.log(res.json(result) , "i am the result console logged"))
