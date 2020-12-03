@@ -82,7 +82,7 @@ router.get('/hello', async (req, res) => {
         console.log(account._id, "i am zee account id")
         await db.User.findByIdAndUpdate(
           {"_id" : account._id},
-          { 'userData.sessionToken': token.toString() },
+          { 'userData.sessionToken': token },
           // { new: true },    //Set new option to true to return the document AFTER update was applied.
           function(err , docs){
             if(err){
@@ -92,8 +92,9 @@ router.get('/hello', async (req, res) => {
             }
           }
         )
-        .then(result => res.json(result))
-        .then(result => console.log(res.json(result) , "i am the result console logged"))
+        .then((result) => console.log(result , "i am final result????"))
+        // .then(result => res.json(result.userData))
+        // .then(result => console.log(res.json(result) , "i am the result console logged"))
         // .catch((error) => {
         //   console.log(error)
         //   return error
