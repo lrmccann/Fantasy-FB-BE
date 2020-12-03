@@ -59,7 +59,10 @@ router.get('/hello', async (req, res) => {
     console.log(req.params.id2, "password")
     var password = req.params.id2
     let account = await db.User
-      .findOne({ 'userData.userName': username });
+      .findOne({ 'userData.userName': username })
+      .catch((error)=> {
+        console.log(error)
+      })
     console.log(account, "this is account")
     if(password === account.password){
       console.log("password DID match")
