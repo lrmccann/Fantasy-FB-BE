@@ -68,7 +68,7 @@ router.get('/hello', async (req, res) => {
         console.log(error)
       })
       if(account){
-        checkPasswordAndSessionToken(account)
+        checkPasswordAndSessionToken(account , password)
       }
     // console.log(account, "this is account")
     // let match = await account.password
@@ -93,8 +93,9 @@ router.get('/hello', async (req, res) => {
     // }
   })
 
-  const checkPasswordAndSessionToken = async (account) => {
-    console.log(account)
+  const checkPasswordAndSessionToken = async (account , password) => {
+    console.log(account, "i am account in checkpasswordandsessiontoken")
+    console.log(password , "i am password in checkpasswordandsessiontoken")
     let passwordFromDb = account.password
     if(password === passwordFromDb){
       console.log("successfully logged in")
