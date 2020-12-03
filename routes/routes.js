@@ -64,7 +64,7 @@ router.get('/hello', async (req, res) => {
       .findOne({ 'userData.userName': username } , function(err , docs){
         if(err){
           console.log(err , "i am first error")
-          return res.status(69).send('bad request or something')
+          return res.status(69).send(err)
         }else{
           console.log(docs , "more docs to log i guess")
           return res.status(420).send("it worked")
@@ -83,11 +83,11 @@ router.get('/hello', async (req, res) => {
         await db.User.findByIdAndUpdate(
             account._id,
           { 'userData.sessionToken': token },
-          { new: true },    //Set new option to true to return the document AFTER update was applied.
+          // { new: true },    //Set new option to true to return the document AFTER update was applied.
           function(err , docs){
             if(err){
               console.log(err , "i am second error")
-              return res.status(69).send("bad code")
+              return res.status(69).send(err)
             }else{
               console.log(docs , "idk what this is but its docs")
               return res.status(300).send("it worked")
