@@ -125,7 +125,7 @@ router.post('/authent' , async (req, res) => {
   console.log("userObj", req.body)
   let account = await db.User.findOne({ 'userData.userName': req.body.userName });
   console.log("account", account)
-  if (!account) {
+  if (account === null) {
     const creds = saltHash(req.body.password);
     const token = createSessiontoken();
     req.body.password = creds.password;
