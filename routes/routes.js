@@ -123,7 +123,7 @@ router.post('/authent' , async (req, res) => {
   // }
   console.log("create-func", req.body)
   console.log("userObj", req.body)
-  let account = await db.User.findOne({ 'userData.userName': req.body.userName });
+  const account = await db.User.findOne({ 'userData.userName': req.body.userName });
   console.log("account", account)
   if (account === null) {
     const creds = saltHash(req.body.password);
