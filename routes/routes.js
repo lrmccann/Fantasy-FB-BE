@@ -130,7 +130,7 @@ router.post('/authent' , async (req, res) => {
     const token = createSessiontoken();
     req.body.password = creds.password;
     req.body.salt = creds.salt;
-    req.body.userData.sessionToken = token;
+    req.body.sessionToken = token;
     await db.User.create(req.body)
       .then(result => res.json(result))
       .catch(err => res.status(422).json(err));
