@@ -122,7 +122,7 @@ router.post('/authent' , async (req, res) => {
   //   res.json("Username is already taken")
   // }
   console.log("create-func", req.body)
-  console.log("userObj", req.body.userData.userName)
+  console.log("userObj", req.body)
   let account = await db.User.findOne({ 'userData.userName': req.body.userData.userName });
   console.log("account", account)
   if (!account) {
