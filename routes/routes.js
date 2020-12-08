@@ -77,7 +77,7 @@ router.get('/hello', async (req, res) => {
           { 'userData.sessionToken': token },
           { new: true }    //You should set the new option to true to return the document after update was applied.
         )
-          .then(result => res.json(result.userData))
+          .then(result => res.json(result))
       } else {
         res.json("Wrong password.")
       }
