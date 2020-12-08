@@ -80,9 +80,9 @@ router.get('/hello', async (req, res) => {
           { new: true }    //You should set the new option to true to return the document after update was applied.
         )
           .then(result => res.json(result.userData))
-      } else {
+      } if(account === null) {
         // res.json("Wrong password.")
-        res.status(404).send('Wrong password.')
+        res.status(404).send('Wrong username')
       }
     } else {
       // res.json("User not found.")
