@@ -133,10 +133,10 @@ router.post('/createAccount' , async (req, res) => {
     req.body.sessionToken = token;
     console.log("session token being created" , token)
     console.log(req.body , "i am request body after the first if conditional")
-    const createAccountInDb =  await db.User.create(req.body)
-    console.log(createAccountInDb)
-    .then(result => console.log(result , "i am the final result in json form"))
-      .then(result => res.json(result))
+    await db.User.create(req.body)
+    // .then(result => console.log(result , "i am the final result in json form"))
+      // .then(result => res.json(result))
+      .then(result => res.send(result) )
       .catch(err => res.status(422).json(err));
   } else {
     res.json("User name already taken.")
