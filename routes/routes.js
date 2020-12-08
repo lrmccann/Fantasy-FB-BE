@@ -59,38 +59,63 @@ router.get('/hello', async (req, res) => {
   })
 
   router.get("/authenticate/:id1/:id2", async (req, res) => {
-    console.log(req.params.id1, "username")
-    var username = req.params.id1
-    console.log(req.params.id2, "password")
-    var password = req.params.id2
+    console.log('request', req.params.id1)
+    const password = req.params.id2;
     let account = await db.User
-      .findOne({ 'userData.userName': username } , function(err , docs){
-        if(err){
-          console.log(err , "i am first error")
-          // return res.json(err)
-        }else{
-          console.log(docs , "more docs to log i guess")
-          // return res.json("it worked")
-        }
-      })
-      let passwordFromDb = account.password
-      if(password === passwordFromDb){
-        console.log("successfully logged in")
-        const token = createSessiontoken().toString()
-        console.log(token , "this is session token")
-        console.log(account._id, "i am zee account id")
-        await db.User.findByIdAndUpdate(
-            { '_id' : account._id},
+      .findOne({ 'userData.userName': req.params.id1 });
+    console.log("account", account)
+    if (account) {
+      const passwordHash = account.password;
+      let match = await bcrypt.compare(password, passwordHash);
+      console.log("match", match)
+      if (match) {
+        const token = createSessiontoken()
+        console.log("token", token)
+        console.log("username", account.userData.userName);
+        await db.User.findOneAndUpdate(
+          { 'userData.userName': req.params.id1 },
           { 'userData.sessionToken': token },
-          {'userFindAndModify' : false},
-          { new: true }    //Set new option to true to return the document AFTER update was applied.
+          { new: true }    //You should set the new option to true to return the document after update was applied.
         )
-        .then(res.json(token))
-      }if(password !== passwordFromDb){
-        return res.json("wrong password")
-      }else{
-        return res.json("wrong username")
+          .then(result => res.json(result.userData))
+      } else {
+        res.json("Wrong password.")
       }
+    } else {
+      res.json("User not found.")
+    }
+    // console.log(req.params.id1, "username")
+    // var username = req.params.id1
+    // console.log(req.params.id2, "password")
+    // var password = req.params.id2
+    // let account = await db.User
+    //   .findOne({ 'userData.userName': username } , function(err , docs){
+    //     if(err){
+    //       console.log(err , "i am first error")
+    //       // return res.json(err)
+    //     }else{
+    //       console.log(docs , "more docs to log i guess")
+    //       // return res.json("it worked")
+    //     }
+    //   })
+    //   let passwordFromDb = account.password
+    //   if(password === passwordFromDb){
+    //     console.log("successfully logged in")
+    //     const token = createSessiontoken().toString()
+    //     console.log(token , "this is session token")
+    //     console.log(account._id, "i am zee account id")
+    //     await db.User.findByIdAndUpdate(
+    //         { '_id' : account._id},
+    //       { 'userData.sessionToken': token },
+    //       {'userFindAndModify' : false},
+    //       { new: true }    //Set new option to true to return the document AFTER update was applied.
+    //     )
+    //     .then(res.json(token))
+    //   }if(password !== passwordFromDb){
+    //     return res.json("wrong password")
+    //   }else{
+    //     return res.json("wrong username")
+    //   }
   })
 
 
