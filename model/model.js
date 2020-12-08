@@ -14,7 +14,7 @@ const userSchema = new Schema({
         age : Number,
         favoriteTeam : String,
         additionalInfo : String,
-        date: {type : Date , default : Date.now}
+        // date: {type : Date , default : Date.now}
     }
 });
 

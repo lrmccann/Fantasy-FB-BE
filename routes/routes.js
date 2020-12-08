@@ -122,9 +122,8 @@ router.post('/createAccount' , async (req, res) => {
   //   res.json("Username is already taken")
   // }
   console.log("req boooodddyyy", req.body)
-  console.log("req paaarraaaammmsss", req.body)
-  console.log( "req reguulllaarr"  ,req)
-  const account = await db.User.findOne({ 'userData.userName': req.body.userName });
+  console.log("req body usernaaaammmeee" , req.body.userData.userName)
+  const account = await db.User.findOne({ 'userData.userName': req.body.userData.userName });
   console.log("account", account)
   if (!account) {
     const creds = await saltHash(req.body.password);
