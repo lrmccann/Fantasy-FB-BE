@@ -6,8 +6,7 @@ const db = require('../model/index');
 var axios = require("axios").default;
 
 const createSessiontoken = () => {
-   const genSessionToken =  Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-   return genSessionToken
+   return  Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 }
 
 const saltHash = async (pass) => {
@@ -109,7 +108,7 @@ router.post('/createAccount' , async (req, res) => {
     const token = createSessiontoken();
     req.body.password = creds.password;
     req.body.salt = creds.salt;
-    req.body.sessionToken = token.genSessionToken;
+    req.body.sessionToken = token;
     console.log("session token being created" , token)
     console.log(req.body , "i am request body after the first if conditional")
     await db.User.create(req.body)
