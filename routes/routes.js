@@ -126,7 +126,7 @@ router.post('/createAccount' , async (req, res) => {
   console.log( "req reguulllaarr"  ,req)
   const account = await db.User.findOne({ 'userData.userName': req.body.userName });
   console.log("account", account)
-  if (!account) {
+  if (account === null) {
     const creds = saltHash(req.body.password);
     const token = createSessiontoken();
     req.body.password = creds.password;
@@ -134,7 +134,7 @@ router.post('/createAccount' , async (req, res) => {
     req.body.sessionToken = token;
     await db.User.create(req.body)
       .then(result => res.json(result))
-      .then(result => console.log(result))
+      .then(result => console.log(result , "i am the final result in json form"))
       .catch(err => res.status(422).json(err));
   } else {
     res.json("User name already taken.")
