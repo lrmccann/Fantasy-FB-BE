@@ -6,7 +6,8 @@ const db = require('../model/index');
 var axios = require("axios").default;
 
 const createSessiontoken = () => {
-  return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+   const genSessionToken =  Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+   return genSessionToken
 }
 
 const saltHash = async (pass) => {
@@ -99,28 +100,6 @@ router.get('/hello', async (req, res) => {
 
 
 router.post('/createAccount' , async (req, res) => {
-  // console.log(req.body, "request body for auth")
-  // let account = await db.User.findOne({"userData.userName" : req.body.userName})
-  // .catch((error) => {
-  //   res.send(error)
-  // })
-  // if(!account){
-  //   const creds = saltHash(await req.body.password);
-  //   const token = createSessiontoken();
-  //   console.log(req, "request .......... noffin")
-  //   const createUser = await req.body
-  //   console.log(createUser , "const for the request body in the page for sure")
-  //   // console.log(req.body , "request .......... boday")
-  //   req.body.password = await creds.password;
-  //   req.body.salt = await creds.salt;
-  //   req.body.sessionToken = token;
-  //   await db.User.create(createUser)
-  //   .then(result => console.log(result))
-  //   .then(result => res.send(result))
-  //   .catch((error) => console.log(error))
-  // }else{
-  //   res.json("Username is already taken")
-  // }
   console.log("req boooodddyyy", req.body)
   console.log("req body usernaaaammmeee" , req.body.userData.userName)
   const account = await db.User.findOne({ 'userData.userName': req.body.userData.userName });
@@ -130,14 +109,11 @@ router.post('/createAccount' , async (req, res) => {
     const token = createSessiontoken();
     req.body.password = creds.password;
     req.body.salt = creds.salt;
-    req.body.sessionToken = token;
+    req.body.sessionToken = token.genSessionToken;
     console.log("session token being created" , token)
     console.log(req.body , "i am request body after the first if conditional")
     await db.User.create(req.body)
-    // .then(result => console.log(result , "i am the final result in json form"))
-      // .then(result => res.json(result))
       .then(result => res.json(result) )
-      // .catch(err => res.status(422).json(err));
   } else {
     res.json("User name already taken.")
   }

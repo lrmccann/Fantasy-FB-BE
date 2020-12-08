@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://lrmccann:Allison401@cluster0.ev4mw.mongodb.net/FantasyUsers?retryWrites=true&w=majorityretryWrites=true' , { useNewUrlParser: true , useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://lrmccann:Allison401@cluster0.ev4mw.mongodb.net/FantasyUsers?retryWrites=true&w=majority' , { useNewUrlParser: true , useUnifiedTopology: true })
 // mongodb://xyz456-shard-00-00.ab123.mongodb.net:27017
 
 app.use('/routes' , routes);
