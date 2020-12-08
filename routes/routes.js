@@ -133,6 +133,7 @@ router.post('/createAccount' , async (req, res) => {
     req.body.salt = await creds.salt;
     req.body.sessionToken = token;
     console.log("session token being created" , token)
+    console.log(req.body , "i am request body after the first if conditional")
     await db.User.create(req.body)
       .then(result => res.json(result))
       .then(result => console.log(result , "i am the final result in json form"))

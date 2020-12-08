@@ -7,6 +7,7 @@ const userSchema = new Schema({
     userData : {
         sessionToken : String,
         userName : String,
+        teamName : String,
         email : String,
         city : String,
         zipCode : String,
