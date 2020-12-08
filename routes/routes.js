@@ -111,9 +111,11 @@ router.post('/createAccount' , async (req, res) => {
 })
 
 router.get('/getSingleUser/:id1' , async (req, res) => {
-  console.log(req.body , "i am request boooooddy")
-  console.log(req.params , "i am request paraaaaaams")
-  console.log(req , "i am reguuuular request")
+  // console.log(req.body , "i am request boooooddy")
+  console.log(req.params.id1 , "i am request paraaaaaams")
+  // console.log(req , "i am reguuuular request")
+  const account = await db.User.findOne({'userData.userName' : req.params.id1})
+  console.log(account)
 })
 
 module.exports = router;
