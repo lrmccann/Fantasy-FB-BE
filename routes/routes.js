@@ -129,8 +129,8 @@ router.post('/createAccount' , async (req, res) => {
   if (!account) {
     const creds = saltHash(req.body.password);
     const token = createSessiontoken();
-    req.body.password = await creds.password;
-    req.body.salt = await creds.salt;
+    req.body.password = creds.password;
+    req.body.salt = creds.salt;
     req.body.sessionToken = token;
     console.log("session token being created" , token)
     console.log(req.body , "i am request body after the first if conditional")
