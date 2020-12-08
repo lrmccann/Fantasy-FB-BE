@@ -77,51 +77,14 @@ router.get('/hello', async (req, res) => {
           { 'userData.sessionToken': token },
           { new: true }    //You should set the new option to true to return the document after update was applied.
         )
-          .then(result => res.json(result))
+          .then(result => res.json(result.userData))
       } else {
         res.json("Wrong password.")
       }
     } else {
       res.json("User not found.")
     }
-    // console.log(req.params.id1, "username")
-    // var username = req.params.id1
-    // console.log(req.params.id2, "password")
-    // var password = req.params.id2
-    // let account = await db.User
-    //   .findOne({ 'userData.userName': username } , function(err , docs){
-    //     if(err){
-    //       console.log(err , "i am first error")
-    //       // return res.json(err)
-    //     }else{
-    //       console.log(docs , "more docs to log i guess")
-    //       // return res.json("it worked")
-    //     }
-    //   })
-    //   let passwordFromDb = account.password
-    //   if(password === passwordFromDb){
-    //     console.log("successfully logged in")
-    //     const token = createSessiontoken().toString()
-    //     console.log(token , "this is session token")
-    //     console.log(account._id, "i am zee account id")
-    //     await db.User.findByIdAndUpdate(
-    //         { '_id' : account._id},
-    //       { 'userData.sessionToken': token },
-    //       {'userFindAndModify' : false},
-    //       { new: true }    //Set new option to true to return the document AFTER update was applied.
-    //     )
-    //     .then(res.json(token))
-    //   }if(password !== passwordFromDb){
-    //     return res.json("wrong password")
-    //   }else{
-    //     return res.json("wrong username")
-    //   }
   })
-
-
-
-
-
 
 router.post('/createAccount' , async (req, res) => {
   console.log("req boooodddyyy", req.body)
