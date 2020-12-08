@@ -131,7 +131,7 @@ router.post('/createAccount' , async (req, res) => {
     const token = createSessiontoken();
     req.body.password = await creds.password;
     req.body.salt = await creds.salt;
-    req.body.userData.sessionToken = token;
+    req.body.sessionToken = token;
     console.log("session token being created" , token)
     await db.User.create(req.body)
       .then(result => res.json(result))
