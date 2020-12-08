@@ -126,7 +126,7 @@ router.post('/createAccount' , async (req, res) => {
   console.log( "req reguulllaarr"  ,req)
   const account = await db.User.findOne({ 'userData.userName': req.body.userName });
   console.log("account", account)
-  if (account === null) {
+  if (!account) {
     const creds = saltHash(req.body.password);
     const token = createSessiontoken();
     req.body.password = creds.password;
