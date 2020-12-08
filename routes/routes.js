@@ -98,7 +98,7 @@ router.get('/hello', async (req, res) => {
 
 
 
-router.post('/createAccount' , async (req, res) => {
+router.post('/createAccount/:id1' , async (req, res) => {
   // console.log(req.body, "request body for auth")
   // let account = await db.User.findOne({"userData.userName" : req.body.userName})
   // .catch((error) => {
