@@ -129,9 +129,10 @@ router.post('/createAccount' , async (req, res) => {
   if (!account) {
     const creds = saltHash(req.body.password);
     const token = createSessiontoken();
-    req.body.password = creds.password;
-    req.body.salt = creds.salt;
-    req.body.sessionToken = token;
+    req.body.password = await creds.password;
+    req.body.salt = await creds.salt;
+    req.body.userData.sessionToken = token;
+    console.log("session token being created" , token)
     await db.User.create(req.body)
       .then(result => res.json(result))
       .then(result => console.log(result , "i am the final result in json form"))
