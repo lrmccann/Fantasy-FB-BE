@@ -81,10 +81,12 @@ router.get('/hello', async (req, res) => {
         )
           .then(result => res.json(result.userData))
       } else {
-        res.json("Wrong password.")
+        // res.json("Wrong password.")
+        res.status(404).send('Wrong password.')
       }
     } else {
-      res.json("User not found.")
+      // res.json("User not found.")
+      res.status(403).send('Wrong username')
     }
   })
 
