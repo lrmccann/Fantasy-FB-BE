@@ -121,9 +121,10 @@ router.post('/createAccount/:id1' , async (req, res) => {
   // }else{
   //   res.json("Username is already taken")
   // }
+  console.log(...req , "this is to decomp the object")
   console.log("req boooodddyyy", req.body)
   console.log("req paaarraaaammmsss", req.body)
-  console.log( "req reguulllaarr" ,req)
+  console.log( "req reguulllaarr"  ,req)
   const account = await db.User.findOne({ 'userData.userName': req.body.userName });
   console.log("account", account)
   if (!account) {
