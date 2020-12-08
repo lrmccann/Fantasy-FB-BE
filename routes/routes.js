@@ -115,7 +115,11 @@ router.get('/getSingleUser/:id1' , async (req, res) => {
   console.log(req.params.id1 , "i am request paraaaaaams")
   // console.log(req , "i am reguuuular request")
   const account = await db.User.findOne({'userData.userName' : req.params.id1})
-  console.log(account)
+  if(!account){
+    res.status(404).send('Account not found')
+  }else{
+    res.json(account.userData)
+  }
 })
 
 module.exports = router;
