@@ -133,11 +133,11 @@ router.post('/createAccount' , async (req, res) => {
     const token = createSessiontoken();
     req.body.password = creds.password;
     req.body.salt = creds.salt;
-    req.body.sessionToken = token;
+    req.body.userData.sessionToken = token;
     console.log("session token being created" , token)
     console.log(req.body , "i am request body after the first if conditional")
     await db.User.create(req.body)
-      .then(result => res.json(result) )
+      .then(result => res.json(result.userData) )
   } else {
     res.json("User name already taken.")
   }
