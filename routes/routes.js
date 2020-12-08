@@ -23,9 +23,10 @@ router.get('/hello', async (req, res) => {
       // return res.send(data)
       return res.json(data)
     })
-  })
+  });
 
-  router.get('/seasons', async (req, res) => {
+        // get all players for player page
+  router.get('/getAllPlayers', async (req, res) => {
     var options = {
       method: 'GET',
       url: 'https://api.sportsdata.io/v3/nfl/scores/json/Players?key=12afde5143164914a73228616f79c12f',
@@ -33,15 +34,15 @@ router.get('/hello', async (req, res) => {
         "Ocp-Apim-Subscription-Key": "12afde5143164914a73228616f79c12f"
       }
     };
-
     axios.request(options).then(function (response) {
       console.log(response)
       return res.json(response.data)
     }).catch(function (error) {
       console.error(error);
     });
-  })
+  });
 
+          // get games by week
   router.get('/gamesByWeek', async (req, res) => {
     var options = {
       method: 'GET',
@@ -57,7 +58,8 @@ router.get('/hello', async (req, res) => {
       console.error(error);
     });
   })
-
+  
+          // Login user for login page
   router.get("/authenticate/:id1/:id2", async (req, res) => {
     console.log('request', req.params.id1)
     const password = req.params.id2;
@@ -86,6 +88,8 @@ router.get('/hello', async (req, res) => {
     }
   })
 
+          // create account route for signup page, wanna split this into 
+          // two later
 router.post('/createAccount' , async (req, res) => {
   console.log("req boooodddyyy", req.body)
   console.log("req body usernaaaammmeee" , req.body.userData.userName)
@@ -104,6 +108,12 @@ router.post('/createAccount' , async (req, res) => {
   } else {
     res.json("User name already taken.")
   }
+})
+
+router.get('/getSingleUser/:id1' , async (req, res) => {
+  console.log(req.body , "i am request boooooddy")
+  console.log(req.params , "i am request paraaaaaams")
+  console.log(req , "i am reguuuular request")
 })
 
 module.exports = router;
