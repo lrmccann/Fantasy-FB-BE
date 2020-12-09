@@ -6,8 +6,10 @@ const app = express();
 const PORT = process.env.PORT ;
 const routes = require('./routes/routes');
 const cors = require('cors');
+const fs = require('fs');
+console.log(fs, " i am fs")
 
-console.log(process.env , "port for process env")
+// console.log(process.env , "port for process env")
 
 
 app.use(cors());
