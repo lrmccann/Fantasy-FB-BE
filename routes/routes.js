@@ -16,7 +16,7 @@ const saltHash = async (pass) => {
   return {password , salt}
 }
 
-router.get('/hello', async (req, res) => {
+router.get('/getAllUsers', async (req, res) => {
   await db.User
     .find({})
     .map(function (data) {
@@ -80,7 +80,7 @@ router.get('/hello', async (req, res) => {
           { new: true }    //You should set the new option to true to return the document after update was applied.
         )
           .then(result => res.json(result.userData))
-      } if(account === null) {
+      } if(!account) {
         // res.json("Wrong password.")
         res.status(404).send('Wrong username')
       }
