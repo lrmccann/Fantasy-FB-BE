@@ -20,20 +20,16 @@ router.get('/getAllUsers', async (req, res) => {
   await db.User
     .find({})
     .map(function (data) {
-      // return res.send(data)
       return res.json(data)
     })
   });
 
         // get all players for player page
+  // ROUTE WITH OLD API KEY https://api.sportsdata.io/v3/nfl/scores/json/Players?key=12afde5143164914a73228616f79c12f' //
   router.get('/getAllPlayers', async (req, res) => {
     var options = {
       method: 'GET',
-      url: 'https://api.sportsdata.io/v3/nfl/scores/json/Players?key=12afde5143164914a73228616f79c12f',
-      headers: {
-        "Ocp-Apim-Subscription-Key": "12afde5143164914a73228616f79c12f"
-      }
-    };
+      url: 'https://api.sportsdata.io/v3/nfl/scores/json/Players?key=71f358599b0f4a87b86f5f29788eea9b',};
     axios.request(options).then(function (response) {
       console.log(response)
       return res.json(response.data)
@@ -43,13 +39,11 @@ router.get('/getAllUsers', async (req, res) => {
   });
 
           // get games by week
+  // ROUTE WITH OLD API KEY https://api.sportsdata.io/v3/nfl/scores/json/Schedules/2020?key=12afde5143164914a73228616f79c12f //
   router.get('/gamesByWeek', async (req, res) => {
     var options = {
       method: 'GET',
-      url: 'https://api.sportsdata.io/v3/nfl/scores/json/Schedules/2020?key=12afde5143164914a73228616f79c12f',
-      headers: {
-        "Ocp-Apim-Subscription-Key": "12afde5143164914a73228616f79c12f"
-      }
+      url: 'https://api.sportsdata.io/v3/nfl/scores/json/Schedules/2020?key=71f358599b0f4a87b86f5f29788eea9b',
     };
     axios.request(options).then(function (response) {
       console.log(response)
