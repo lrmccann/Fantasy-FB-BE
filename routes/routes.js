@@ -27,18 +27,16 @@ router.get('/getAllUsers', async (req, res) => {
         // get all players for player page
   // ROUTE WITH OLD API KEY https://api.sportsdata.io/v3/nfl/scores/json/Players?key=12afde5143164914a73228616f79c12f' //
   router.get('/getAllPlayers/:id1', async (req, res) => {
-    console.log(req.body , "request booody")
-    console.log(req.params , "request paaarraaammmss")
-    console.log(req , "whoooooollleee request")
-    // var options = {
-    //   method: 'GET',
-    //   url: 'https://api.sportsdata.io/v3/nfl/scores/json/Players?key=71f358599b0f4a87b86f5f29788eea9b',};
-    // axios.request(options).then(function (response) {
-    //   console.log(response)
-    //   return res.json(response.data)
-    // }).catch(function (error) {
-    //   console.error(error);
-    // });
+    const currentDate = req.params.id1
+    var options = {
+      method: 'GET',
+      url: `https://api.sportsdata.io/v3/nfl/stats/json/DailyFantasyPlayers/${currentDate}?key=71f358599b0f4a87b86f5f29788eea9b`};
+    axios.request(options).then(function (response) {
+      console.log(response)
+      return res.json(response.data)
+    }).catch(function (error) {
+      console.error(error);
+    });
   });
 
           // get games by week
