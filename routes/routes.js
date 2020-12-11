@@ -95,10 +95,13 @@ router.get('/getAllUsers', async (req, res) => {
         const arrayToPushTo = [];
         // console.log(allPlayersCurrentDay , "fantasy users to map")
         const allPlayersToFilter = [allPlayersCurrentDay.data]
-        console.log(allPlayersToFilter.data , "MAP THIS")
+        // console.log(allPlayersToFilter.data , "MAP THIS")
         // console.log(allPlayersToFilter , "all players to filtter")
+        var mapMe = null
          usersCurrentTeamToMap.forEach(async (index) => {
           console.log(index , "players currently on team")
+          mapMe = index.Name;
+          console.log(mapMe , "afjaflasjfkasjflaksjfaiso")
           // const allPlayersToFilterBUTREALLYMATCH = allPlayersToFilter.data
           var idkEvenMore = null
           allPlayersToFilter.forEach(async (indexTwo) => {
@@ -109,7 +112,8 @@ router.get('/getAllUsers', async (req, res) => {
             })
           })
           console.log(idkEvenMore , "after the for each")
-          // const found = allPlayersToFilter.find( el => console.log(el , "i am each element"))
+          const found = idkEvenMore.find( el => el.Name == mapMe )
+          console.log(found)
           // console.log(found , " i should be matching players")
           })// return the IIIIIIDDDSSS BOi
       })
