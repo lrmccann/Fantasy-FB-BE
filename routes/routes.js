@@ -96,17 +96,19 @@ router.get('/getAllUsers', async (req, res) => {
         // console.log(allPlayersCurrentDay , "fantasy users to map")
         const allPlayersToFilter = [allPlayersCurrentDay.data]
         console.log(allPlayersToFilter.data , "MAP THIS")
-        console.log(allPlayersToFilter , "all players to filtter")
+        // console.log(allPlayersToFilter , "all players to filtter")
          usersCurrentTeamToMap.forEach(async (index) => {
           console.log(index , "players currently on team")
           // const allPlayersToFilterBUTREALLYMATCH = allPlayersToFilter.data
+          const idkEvenMore = null
           allPlayersToFilter.forEach(async (indexTwo) => {
             console.log(indexTwo , "ughhhhhhhhhh more to forEach")
             var idk = indexTwo
             idk.forEach((index) => {
-              console.log(index)
+              idkEvenMore = index
             })
           })
+          console.log(idkEvenMore , "after the for each")
           const found = allPlayersToFilter.find( el => console.log(el , "i am each element"))
           console.log(found , " i should be matching players")
           })// return the IIIIIIDDDSSS BOi
