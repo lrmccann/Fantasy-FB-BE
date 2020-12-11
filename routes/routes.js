@@ -96,7 +96,7 @@ router.get('/getAllUsers', async (req, res) => {
         // console.log(allPlayersCurrentDay , "fantasy users to map")
         const allPlayersToFilter = allPlayersCurrentDay
         // console.log(allPlayersToFilter , "MAP THIS")
-        const rando = allPlayersToFilter.data
+        const rando = await allPlayersToFilter.data
         console.log(rando , "total # of players")
 
         // var mapMe = []
