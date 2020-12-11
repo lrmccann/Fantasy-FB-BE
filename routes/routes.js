@@ -85,7 +85,9 @@ router.get('/getAllUsers', async (req, res) => {
 // then we need to concat on the my player screen
 
 
-  router.get("/getUserTeam/:id1" , async (req, res) => {
+  router.get("/convertUserTeamToID" , async (req, res) => {
+    console.log(req , "request for new route")
+    console.log(req.body , "request body for new route")
     console.log(req.params , "request for params for get user team")
     await db.User.find({})
 
