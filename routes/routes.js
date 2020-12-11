@@ -109,8 +109,9 @@ router.get('/getAllUsers', async (req, res) => {
           // var thisIsYourTeam = index
 
           var USEMEPLEASE
-          usersCurrentTeamToMap.forEach((index) =>{
+          usersCurrentTeamToMap.map(( myKey , index) =>{
             console.log(index, "i am theeeee index")
+            console.log(myKey , "i am theeee key")
             USEMEPLEASE = index
           })
 
