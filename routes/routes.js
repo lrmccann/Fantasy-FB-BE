@@ -102,19 +102,40 @@ router.get('/getAllUsers', async (req, res) => {
           console.log(index , "players currently on team")
           mapMe = await index.Name;
           console.log(mapMe , "afjaflasjfkasjflaksjfaiso")
+
+
+          
           // const allPlayersToFilterBUTREALLYMATCH = allPlayersToFilter.data
           // var idkEvenMore = null
+
+
+
           var idk = []
           allPlayersToFilter.forEach(async (indexTwo) => {
-            console.log(indexTwo , "ughhhhhhhhhh more to forEach")
+            // console.log(indexTwo , "ughhhhhhhhhh more to forEach")
             idk = await indexTwo
+
+
+
+
             // idk.forEach((index) => {
             //   idkEvenMore = await index
             // })
           })
           // console.log(idkEvenMore , "after the for each")
-          const found = idk.find( el => el.Name == mapMe )
-          console.log(found , "i was lost but now i'm found")
+
+
+
+// USSEEE
+
+          // const found = idk.find( el => el.Name == mapMe )
+          // console.log(found , "i was lost but now i'm found")
+
+
+
+
+
+
           // console.log(found , " i should be matching players")
           })// return the IIIIIIDDDSSS BOi
       })
