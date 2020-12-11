@@ -25,7 +25,6 @@ router.get('/getAllUsers', async (req, res) => {
   });
 
         // get all players for player page
-  // ROUTE WITH OLD API KEY https://api.sportsdata.io/v3/nfl/scores/json/Players?key=12afde5143164914a73228616f79c12f' //
   router.get('/getAllPlayers/:id1', async (req, res) => {
     const currentDate = req.params.id1
     var options = {
@@ -40,7 +39,6 @@ router.get('/getAllUsers', async (req, res) => {
   });
 
           // get games by week
-  // ROUTE WITH OLD API KEY https://api.sportsdata.io/v3/nfl/scores/json/Schedules/2020?key=12afde5143164914a73228616f79c12f //
   router.get('/gamesByWeek', async (req, res) => {
     var options = {
       method: 'GET',                                                        
