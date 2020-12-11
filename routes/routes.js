@@ -112,6 +112,7 @@ router.get('/getAllUsers', async (req, res) => {
 
 
           var found = rando.find(el => el.Name == usersCurrentTeamToMap )
+          console.log(found , "please be the players")
           // console.log(found , "result")
 
 
