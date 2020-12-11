@@ -97,10 +97,11 @@ router.get('/getAllUsers', async (req, res) => {
         const allPlayersToFilter = allPlayersCurrentDay
         // console.log(allPlayersToFilter , "MAP THIS")
         const rando = allPlayersToFilter.data
+        console.log(rando , "total # of players")
 
         // var mapMe = []
 
-        console.log(usersCurrentTeamToMap , "assgklhd;fldk")
+        // console.log(usersCurrentTeamToMap , "assgklhd;fldk")
         
         //  usersCurrentTeamToMap.forEach(async (index) => {
         //   console.log(index, "i am current users team")
@@ -110,7 +111,7 @@ router.get('/getAllUsers', async (req, res) => {
           // var thisIsYourTeam = index
 
 
-          // var found = rando.find(el => el.Name == )
+          var found = rando.find(el => el.Name == usersCurrentTeamToMap )
           // console.log(found , "result")
 
 
