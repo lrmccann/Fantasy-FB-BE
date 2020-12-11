@@ -99,11 +99,14 @@ router.get('/getAllUsers', async (req, res) => {
         const rando = allPlayersToFilter.data
 
         // var mapMe = []
-        
-         usersCurrentTeamToMap.forEach(async (index) => {
-          console.log(index, "i am current users team")
+        afdsadas
 
-         }
+        console.log(usersCurrentTeamToMap , "assgklhd;fldk")
+        
+        //  usersCurrentTeamToMap.forEach(async (index) => {
+        //   console.log(index, "i am current users team")
+
+        //  }
 
           // var thisIsYourTeam = index
 
@@ -125,7 +128,8 @@ router.get('/getAllUsers', async (req, res) => {
 
           // console.log(found , " i should be matching players")
           // }
-          )// return the IIIIIIDDDSSS BOi
+          // )
+          // return the IIIIIIDDDSSS BOi
       })
 
   })
