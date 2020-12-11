@@ -99,7 +99,6 @@ router.get('/getAllUsers', async (req, res) => {
         const rando = allPlayersToFilter.data
 
         // var mapMe = []
-        afdsadas
 
         console.log(usersCurrentTeamToMap , "assgklhd;fldk")
         
