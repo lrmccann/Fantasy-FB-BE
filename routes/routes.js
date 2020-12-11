@@ -86,7 +86,7 @@ router.get('/getAllUsers', async (req, res) => {
 
 
   router.get("/getUserTeam/:id1" , async (req, res) => {
-    console.log(req.params)
+    console.log(req.params , "request for params for get user team")
     await db.User.find({})
 
 
