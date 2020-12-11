@@ -101,26 +101,15 @@ router.get('/getAllUsers', async (req, res) => {
         // var mapMe = []
         
          usersCurrentTeamToMap.forEach(async (index) => {
+          console.log(index, "i am current users team")
+
+         }
 
           // var thisIsYourTeam = index
 
 
-          var found = rando.find(el => console.log(el , "asfasgsdgafdhrhsgd"))
-          console.log(found , "result")
-
-          // iActuallyNeedToBeMappedTho = index
-
-          // var idk = []
-          // allPlayersToFilter.forEach(async (indexTwo) => {
-            // console.log(indexTwo , "ughhhhhhhhhh more to forEach")
-            // idk = await indexTwo
-
-            // idk.forEach((index) => {
-            //   idkEvenMore = await index
-            // })
-          // })
-          // console.log(idk , "i am idk please help")
-          // console.log(idkEvenMore , "after the for each")
+          // var found = rando.find(el => el.Name == )
+          // console.log(found , "result")
 
 
 
@@ -130,12 +119,13 @@ router.get('/getAllUsers', async (req, res) => {
           // console.log(found , "i was lost but now i'm found")
 
 
-
+         
 
 
 
           // console.log(found , " i should be matching players")
-          })// return the IIIIIIDDDSSS BOi
+          // }
+          )// return the IIIIIIDDDSSS BOi
       })
 
   })
