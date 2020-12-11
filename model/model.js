@@ -22,6 +22,4 @@ const userSchema = new Schema({
 
 const User = mongoose.model("users" , userSchema);
 
-// tried FantasyUsers
-
 module.exports = User;
