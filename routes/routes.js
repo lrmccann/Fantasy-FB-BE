@@ -94,11 +94,11 @@ router.get('/getAllUsers', async (req, res) => {
       .then(allPlayersCurrentDay => {
         const arrayToPushTo = [];
         // console.log(allPlayersCurrentDay , "fantasy users to map")
-        const allPlayersToFilter = await [allPlayersCurrentDay]
+        const allPlayersToFilter = [allPlayersCurrentDay]
         console.log(allPlayersToFilter , "all players to filtter")
-         usersCurrentTeamToMap.forEach((index) => {
+         usersCurrentTeamToMap.forEach(async (index) => {
           console.log(index , "players currently on team")
-          const found = await allPlayersToFilter.find(el => console.log(el.data , "i am each element"))
+          const found = allPlayersToFilter.find( el => console.log(el.data , "i am each element"))
           console.log(found , " i should be matching players")
           })// return the IIIIIIDDDSSS BOi
       })
