@@ -14,6 +14,8 @@ const userSchema = new Schema({
         age : Number,
         favoriteTeam : String,
         additionalInfo : String,
+        winLossRation : String,
+        userTeam : Array
         // date: {type : Date , default : Date.now}
     }
 });
