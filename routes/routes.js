@@ -94,37 +94,30 @@ router.get('/getAllUsers', async (req, res) => {
       .then(allPlayersCurrentDay => {
         const arrayToPushTo = [];
         // console.log(allPlayersCurrentDay , "fantasy users to map")
-        const allPlayersToFilter = [allPlayersCurrentDay]
+        const allPlayersToFilter = allPlayersCurrentDay
         console.log(allPlayersToFilter , "MAP THIS")
-        // console.log(allPlayersToFilter , "all players to filtter")
-        var mapMe = []
+        const rando = allPlayersToFilter.data
+
+        // var mapMe = []
+        
          usersCurrentTeamToMap.forEach(async (index) => {
-          // console.log(index , "players currently on team")
-          // mapMe = await index.Name;
-          // console.log(mapMe , "afjaflasjfkasjflaksjfaiso")
-
-          iActuallyNeedToBeMappedTho = index
 
 
+          var found = rando.find(el => el.Name == allPlayersToFilter)
+          console.log(found , "result")
 
-          // const allPlayersToFilterBUTREALLYMATCH = allPlayersToFilter.data
-          // var idkEvenMore = null
+          // iActuallyNeedToBeMappedTho = index
 
-
-
-          var idk = []
-          allPlayersToFilter.forEach(async (indexTwo) => {
+          // var idk = []
+          // allPlayersToFilter.forEach(async (indexTwo) => {
             // console.log(indexTwo , "ughhhhhhhhhh more to forEach")
-            idk = await indexTwo
-
-
-
+            // idk = await indexTwo
 
             // idk.forEach((index) => {
             //   idkEvenMore = await index
             // })
-          })
-          console.log(idk , "i am idk please help")
+          // })
+          // console.log(idk , "i am idk please help")
           // console.log(idkEvenMore , "after the for each")
 
 
