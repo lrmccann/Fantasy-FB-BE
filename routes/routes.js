@@ -97,18 +97,22 @@ router.get('/getAllUsers', async (req, res) => {
         const allPlayersToFilter = allPlayersCurrentDay
         // console.log(allPlayersToFilter , "MAP THIS")
         const rando = await allPlayersToFilter.data
-        console.log(rando , "total # of players")
 
-        // var mapMe = []
 
-        // console.log(usersCurrentTeamToMap , "assgklhd;fldk")
+
         
-        //  usersCurrentTeamToMap.forEach(async (index) => {
-        //   console.log(index, "i am current users team")
+        // console.log(rando , "total # of players")
+
 
         //  }
 
           // var thisIsYourTeam = index
+
+          const USEMEPLEASE
+          usersCurrentTeamToMap.forEach((index) =>{
+            console.log(index, "i am theeeee index")
+            USEMEPLEASE = index
+          })
 
 
           var found = rando.find(el => el.Name == usersCurrentTeamToMap )
