@@ -99,12 +99,14 @@ router.get('/getAllUsers', async (req, res) => {
         // console.log(allPlayersToFilter , "all players to filtter")
         var mapMe = []
          usersCurrentTeamToMap.forEach(async (index) => {
-          console.log(index , "players currently on team")
-          mapMe = await index.Name;
-          console.log(mapMe , "afjaflasjfkasjflaksjfaiso")
+          // console.log(index , "players currently on team")
+          // mapMe = await index.Name;
+          // console.log(mapMe , "afjaflasjfkasjflaksjfaiso")
+
+          iActuallyNeedToBeMappedTho = index
 
 
-          
+
           // const allPlayersToFilterBUTREALLYMATCH = allPlayersToFilter.data
           // var idkEvenMore = null
 
@@ -122,6 +124,7 @@ router.get('/getAllUsers', async (req, res) => {
             //   idkEvenMore = await index
             // })
           })
+          console.log(idk , "i am idk please help")
           // console.log(idkEvenMore , "after the for each")
 
 
