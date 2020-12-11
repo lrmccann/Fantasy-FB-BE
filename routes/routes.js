@@ -102,8 +102,10 @@ router.get('/getAllUsers', async (req, res) => {
         
          usersCurrentTeamToMap.forEach(async (index) => {
 
+          // var thisIsYourTeam = index
 
-          var found = rando.find(el => el.Name == allPlayersToFilter)
+
+          var found = rando.find(el => el.Name == usersCurrentTeamToMap)
           console.log(found , "result")
 
           // iActuallyNeedToBeMappedTho = index
