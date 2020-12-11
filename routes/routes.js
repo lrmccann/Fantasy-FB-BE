@@ -30,7 +30,7 @@ router.get('/getAllUsers', async (req, res) => {
     const currentDate = req.params.id1
     var options = {
       method: 'GET',
-      url: `https://api.sportsdata.io/v3/nfl/stats/json/DailyFantasyPlayers/${currentDate}?key=71f358599b0f4a87b86f5f29788eea9b`};
+      url: `https://api.sportsdata.io/v3/nfl/stats/json/DailyFantasyPlayers/${currentDate}?key=698a33680a214757894fa156ab50c0b2`};
     axios.request(options).then(function (response) {
       console.log(response)
       return res.json(response.data)
@@ -43,8 +43,8 @@ router.get('/getAllUsers', async (req, res) => {
   // ROUTE WITH OLD API KEY https://api.sportsdata.io/v3/nfl/scores/json/Schedules/2020?key=12afde5143164914a73228616f79c12f //
   router.get('/gamesByWeek', async (req, res) => {
     var options = {
-      method: 'GET',
-      url: 'https://api.sportsdata.io/v3/nfl/scores/json/Schedules/2020?key=71f358599b0f4a87b86f5f29788eea9b',
+      method: 'GET',                                                        
+      url: 'https://api.sportsdata.io/v3/nfl/scores/json/Schedules/2020?key=698a33680a214757894fa156ab50c0b2',
     };
     axios.request(options).then(function (response) {
       console.log(response)
