@@ -109,7 +109,7 @@ router.get('/getAllUsers', async (req, res) => {
             })
           })
           console.log(idkEvenMore , "after the for each")
-          const found = allPlayersToFilter.find( el => console.log(el , "i am each element"))
+          // const found = allPlayersToFilter.find( el => console.log(el , "i am each element"))
           console.log(found , " i should be matching players")
           })// return the IIIIIIDDDSSS BOi
       })
