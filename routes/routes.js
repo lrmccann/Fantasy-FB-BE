@@ -98,7 +98,10 @@ router.get('/getAllUsers', async (req, res) => {
         console.log(allPlayersToFilter , "all players to filtter")
          usersCurrentTeamToMap.forEach(async (index) => {
           console.log(index , "players currently on team")
-          const allPlayersToFilterBUTREALLYMATCH = allPlayersToFilter.data
+          // const allPlayersToFilterBUTREALLYMATCH = allPlayersToFilter.data
+          allPlayersToFilter.forEach(async (indexTwo) => {
+            console.log(indexTwo , "ughhhhhhhhhh more to forEach")
+          })
           const found = allPlayersToFilterBUTREALLYMATCH.find( el => console.log(el , "i am each element"))
           console.log(found , " i should be matching players")
           })// return the IIIIIIDDDSSS BOi
