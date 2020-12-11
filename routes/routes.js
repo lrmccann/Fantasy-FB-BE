@@ -45,10 +45,10 @@ router.get('/getAllUsers', async (req, res) => {
       url: 'https://api.sportsdata.io/v3/nfl/scores/json/Schedules/2020?key=698a33680a214757894fa156ab50c0b2',
     };
     axios.request(options).then(function (response) {
-      console.log(response)
+      // console.log(response)
       return res.json(response.data)
     }).catch(function (error) {
-      console.error(error);
+      // console.error(error);
     });
   })
   
