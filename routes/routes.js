@@ -85,11 +85,11 @@ router.get('/getAllUsers', async (req, res) => {
 // then we need to concat on the my player screen
 
 
-  router.get("/getUserTeam" , async (req, res) => {
-    console.log("req boooodddyyy", req.body)
-    console.log("req paaarrraammss", req.params)
-    console.log("requeeessssstttttt", req)
-    // await db.User.find
+  router.get("/getUserTeam/:id1" , async (req, res) => {
+    console.log(req.params)
+    await db.User.find({})
+
+
   })
 
           // create account route for signup page, wanna split this into 
