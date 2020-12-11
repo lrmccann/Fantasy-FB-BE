@@ -85,11 +85,17 @@ router.get('/getAllUsers', async (req, res) => {
 // then we need to concat on the my player screen
 
 
-  router.get("/convertUserTeamToID" , async (req, res) => {
+  router.get("/convertUserTeamToID/:id1/:id2" , async (req, res) => {
+    // id 1 is user team
+    // id 2 is current date
     console.log(req , "request for new route")
     console.log(req.body , "request body for new route")
     console.log(req.params , "request for params for get user team")
-    await db.User.find({})
+    const arrayOfPlayerNamesToMap = req.params.id1;
+    await arrayOfPlayerNamesToMap.forEach((index) => {
+      axios.get(`https://api.sportsdata.io/v3/nfl/stats/json/DailyFantasyPlayers/${currentDate}?key=698a33680a214757894fa156ab50c0b2`)
+    })
+    // await db.User.find({})
 
 
   })
