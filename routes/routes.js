@@ -91,7 +91,7 @@ router.get('/getAllUsers', async (req, res) => {
       await axios.get(`https://api.sportsdata.io/v3/nfl/stats/json/DailyFantasyPlayers/${currentDateForAPI}?key=698a33680a214757894fa156ab50c0b2` ,{
         "method" : "GET"
       })
-      .then(allPlayersCurrentDay => {
+      .then(async allPlayersCurrentDay => {
         const arrayToPushTo = [];
         // console.log(allPlayersCurrentDay , "fantasy users to map")
         const allPlayersToFilter = allPlayersCurrentDay
