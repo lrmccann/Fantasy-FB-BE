@@ -74,13 +74,22 @@ router.get('/getAllUsers', async (req, res) => {
         )
           .then(result => res.json(result.userData))
       } if(!account) {
-        // res.json("Wrong password.")
         res.status(404).send('Wrong username')
       }
     } else {
-      // res.json("User not found.")
       res.status(403).send('Wrong username')
     }
+  })
+// so we need to get the player names from mongodb on click of login and STORE THE IDS IN LOCAL STORAGE IN AN ARRAY
+// then we need to send them back on click of "My Team" button using a forEach to get back all the player data
+// then we need to concat on the my player screen
+
+
+
+  router.get("/convertToPlayerID" , async (req, res) => {
+    console.log("req boooodddyyy", req.body)
+    console.log("req paaarrraammss", req.params)
+    console.log("requeeessssstttttt", req)
   })
 
           // create account route for signup page, wanna split this into 

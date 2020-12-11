@@ -14,10 +14,10 @@ const userSchema = new Schema({
         age : Number,
         favoriteTeam : String,
         additionalInfo : String,
-        winLossRation : String,
-        userFantasyTeam : Array
+        winLossRation : String
         // date: {type : Date , default : Date.now}
-    }
+    },
+    userFantasyTeam : Array
 });
 
 const User = mongoose.model("users" , userSchema);
