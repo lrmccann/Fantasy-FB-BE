@@ -94,7 +94,8 @@ router.get('/getAllUsers', async (req, res) => {
       .then(allPlayersCurrentDay => {
         const arrayToPushTo = [];
         // console.log(allPlayersCurrentDay , "fantasy users to map")
-        const allPlayersToFilter = [allPlayersCurrentDay]
+        const allPlayersToFilter = [allPlayersCurrentDay.data]
+        console.log(allPlayersToFilter.data , "MAP THIS")
         console.log(allPlayersToFilter , "all players to filtter")
          usersCurrentTeamToMap.forEach(async (index) => {
           console.log(index , "players currently on team")
