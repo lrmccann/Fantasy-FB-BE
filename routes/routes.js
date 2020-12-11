@@ -98,11 +98,7 @@ router.get('/getAllUsers', async (req, res) => {
         console.log(allPlayersToFilter , "all players to filtter")
         usersCurrentTeamToMap.forEach((index) => {
           console.log(index , "players currently on team")
-          const found = allPlayersToFilter.find(el => el.map((myKey , index)=>{
-            myKey = index.Name
-            console.log(myKey , "i am key")
-            console.log(index , "i am index")
-          }))
+          const found = allPlayersToFilter.find(el => console.log(el , "i am each element"))
           console.log(found , " i should be matching players")
           })// return the IIIIIIDDDSSS BOi
       })
