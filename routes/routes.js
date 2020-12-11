@@ -94,7 +94,7 @@ router.get('/getAllUsers', async (req, res) => {
       .then(allPlayersCurrentDay => {
         const arrayToPushTo = [];
         // console.log(allPlayersCurrentDay , "fantasy users to map")
-        const allPlayersToFilter = [allPlayersCurrentDay.data]
+        const allPlayersToFilter = [allPlayersCurrentDay]
         console.log(allPlayersToFilter.data , "MAP THIS")
         // console.log(allPlayersToFilter , "all players to filtter")
         var mapMe = []
