@@ -86,15 +86,18 @@ router.get('/getAllUsers', async (req, res) => {
 
 
   router.get("/convertUserTeamToID/:id1/:id2" , async (req, res) => {
-    // id 1 is user team
-    // id 2 is current date
-    console.log(req , "request for new route")
-    console.log(req.body , "request body for new route")
-    console.log(req.params , "request for params for get user team")
-    const arrayOfPlayerNamesToMap = req.params.id1;
-    await arrayOfPlayerNamesToMap.forEach((index) => {
-      axios.get(`https://api.sportsdata.io/v3/nfl/stats/json/DailyFantasyPlayers/${currentDate}?key=698a33680a214757894fa156ab50c0b2`)
-    })
+    const arrayOfPlayerNamesToMap = [req.params.id1];
+    const currentDateForAPI = req.params.id2;
+      await axios.get(`https://api.sportsdata.io/v3/nfl/stats/json/DailyFantasyPlayers/${currentDateForAPI}?key=698a33680a214757894fa156ab50c0b2` ,{
+        "method" : "GET"
+      })
+      .then(allPlayersCurrentDay => {
+        console.log(allPlayersCurrentDay , "fantasy users to map")
+      })
+      arrayOfPlayerNamesToMap.forEach((index) => {
+        console.log(index , "player names to map")
+
+        })
     // await db.User.find({})
 
 
