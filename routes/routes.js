@@ -72,7 +72,7 @@ router.get('/getAllUsers', async (req, res) => {
           { 'userData.sessionToken': token },
           { new: true }    //You should set the new option to true to return the document after update was applied.
         )
-          .then(result => res.json(result.userData , result.userFantasyTeam))
+          .then(result => res.json(result))
       } if(!account) {
         res.status(404).send('Wrong username')
       }
