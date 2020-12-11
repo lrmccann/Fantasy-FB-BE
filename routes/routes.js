@@ -95,7 +95,7 @@ router.get('/getAllUsers', async (req, res) => {
         const arrayToPushTo = [];
         // console.log(allPlayersCurrentDay , "fantasy users to map")
         const allPlayersToFilter = allPlayersCurrentDay
-        console.log(allPlayersToFilter , "MAP THIS")
+        // console.log(allPlayersToFilter , "MAP THIS")
         const rando = allPlayersToFilter.data
 
         // var mapMe = []
@@ -105,7 +105,7 @@ router.get('/getAllUsers', async (req, res) => {
           // var thisIsYourTeam = index
 
 
-          var found = rando.find(el => el.Name == usersCurrentTeamToMap)
+          var found = rando.find(el => console.log(el , "asfasgsdgafdhrhsgd"))
           console.log(found , "result")
 
           // iActuallyNeedToBeMappedTho = index
