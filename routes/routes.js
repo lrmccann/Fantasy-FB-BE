@@ -97,14 +97,14 @@ router.get('/getAllUsers', async (req, res) => {
         const allPlayersToFilter = [allPlayersCurrentDay.data]
         // console.log(allPlayersToFilter.data , "MAP THIS")
         // console.log(allPlayersToFilter , "all players to filtter")
-        var mapMe = null
+        var mapMe = []
          usersCurrentTeamToMap.forEach(async (index) => {
           console.log(index , "players currently on team")
           mapMe = await index.Name;
           console.log(mapMe , "afjaflasjfkasjflaksjfaiso")
           // const allPlayersToFilterBUTREALLYMATCH = allPlayersToFilter.data
           // var idkEvenMore = null
-          var idk = null
+          var idk = []
           allPlayersToFilter.forEach(async (indexTwo) => {
             console.log(indexTwo , "ughhhhhhhhhh more to forEach")
             idk = await indexTwo
